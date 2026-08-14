@@ -1,12 +1,41 @@
 # Smart Recruitment & Resume Screening Platform
 
-[![CI/CD Pipeline](https://github.com/saicharanindia/ai-recruitment-platform/actions/workflows/ci-cd.yml/badge.svg)](https://github.com/saicharanindia/ai-recruitment-platform/actions)
-![.NET 10 LTS](https://img.shields.io/badge/.NET-10.0-purple.svg)
-![Angular 22](https://img.shields.io/badge/Angular-22-red.svg)
-![Python 3.11 FastAPI](https://img.shields.io/badge/Python-FastAPI-teal.svg)
-![SQL Server 2025](https://img.shields.io/badge/Database-SQL_Server_2025-blue.svg)
+<p align="center">
+  <img src="https://raw.githubusercontent.com/saicharanindia/ai-recruitment-platform/main/docs/assets/dashboard.png" alt="Smart Recruitment Platform Dashboard" width="100%" />
+</p>
 
-An enterprise-ready **AI-Driven Recruitment Platform** designed for high-scale candidate management, automated resume parsing, job match scoring, and dynamic interview question generation.
+<p align="center">
+  <a href="https://github.com/saicharanindia/ai-recruitment-platform/actions"><img src="https://img.shields.io/badge/CI%2FCD-GitHub_Actions-blue?style=for-the-badge&logo=githubactions" alt="CI/CD Status"></a>
+  <img src="https://img.shields.io/badge/.NET-10.0_LTS-512BD4?style=for-the-badge&logo=dotnet" alt=".NET 10">
+  <img src="https://img.shields.io/badge/Angular-22.0-DD0031?style=for-the-badge&logo=angular" alt="Angular 22">
+  <img src="https://img.shields.io/badge/Python-FastAPI-009688?style=for-the-badge&logo=fastapi" alt="FastAPI">
+  <img src="https://img.shields.io/badge/SQL_Server-2025-CC292B?style=for-the-badge&logo=microsoftsqlserver" alt="SQL Server 2025">
+  <img src="https://img.shields.io/badge/Docker-Containerized-2496ED?style=for-the-badge&logo=docker" alt="Docker">
+  <img src="https://img.shields.io/badge/Kubernetes-AKS-326CE5?style=for-the-badge&logo=kubernetes" alt="Kubernetes">
+  <img src="https://img.shields.io/badge/Terraform-IaC-7B42BC?style=for-the-badge&logo=terraform" alt="Terraform">
+</p>
+
+An enterprise-ready, **AI-Driven Recruitment Platform** designed for high-scale candidate pipeline management, automated resume parsing, AI-powered match scoring, and dynamic interview question generation.
+
+---
+
+## 📸 Platform Interface Screenshots
+
+### 📊 1. Recruiter Management Portal
+*Comprehensive candidate pipeline tracking, real-time match scoring breakdown, applicant demographics, and top skills distribution.*
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/saicharanindia/ai-recruitment-platform/main/docs/assets/dashboard.png" alt="Recruiter Dashboard Screenshot" width="100%" />
+</p>
+
+---
+
+### 🤖 2. AI Resume Analysis & Match Scoring Gauge
+*NLP-driven resume evaluation engine featuring 0-100 fit score gauge, matched vs. missing skills analysis, candidate recommendation highlights, and auto-generated technical interview questions.*
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/saicharanindia/ai-recruitment-platform/main/docs/assets/ai-match.png" alt="AI Match Analysis Screen" width="100%" />
+</p>
 
 ---
 
@@ -16,33 +45,50 @@ An enterprise-ready **AI-Driven Recruitment Platform** designed for high-scale c
 
 ---
 
-## 🏗️ Architectural Overview
+## 🏗️ Architectural Overview & Data Flow
 
 ```mermaid
-flowchart LR
-    subgraph Frontend [Angular 22 SPA]
-        UI[Components & Signals] --> HTTP[HttpClient & JWT Interceptor]
+flowchart TB
+    subgraph Client [Angular 22 SPA Client]
+        UI[Angular Components & Signals] --> HTTP[HttpClient & JWT Interceptor]
     end
 
-    subgraph Backend [.NET 10 Web API]
-        HTTP --> CTRL[Controllers]
+    subgraph API [.NET 10 Web API Core]
+        HTTP --> CTRL[API Controllers]
         CTRL --> SVC[Application Services]
-        SVC --> DB[(SQL Server 2025)]
+        SVC --> EF[Entity Framework Core 9]
+        SVC --> AUTH[JWT Security & Hasher]
     end
 
-    subgraph AIService [Python FastAPI Microservice]
-        SVC -->|HTTP REST| AI[FastAPI Service]
-        AI --> LLM[OpenAI / LLM Engine]
+    subgraph Microservice [Python 3.11 FastAPI Microservice]
+        SVC -->|HTTP REST Client| AI[FastAPI Endpoints]
+        AI --> NLP[NLP Resume Parser]
+        AI --> LLM[OpenAI GPT-4 Integration]
+    end
+
+    subgraph Database [SQL Server 2025 Tier]
+        EF --> DB[(Microsoft SQL Server 2025)]
+    end
+
+    subgraph CloudDevOps [Containerized DevOps Infrastructure]
+        DOCKER[Docker Compose] --> K8S[Kubernetes Cluster / AKS]
+        TERRAFORM[Terraform IaC] --> K8S
     end
 ```
 
-### Key Technical Specs:
-- **Backend**: C# ASP.NET Core (.NET 10) Clean Architecture (`Recruitment.Domain`, `Recruitment.Application`, `Recruitment.Infrastructure`, `Recruitment.API`, `Recruitment.Tests`).
-- **Frontend**: Angular 22 Single Page Application (`recruitment-app`) with Signals, Reactive Forms, Guards, and Interceptors.
-- **AI Microservice**: Python 3.11 + FastAPI microservice (`ai-service/`) for NLP resume parsing and resume-to-job matching.
-- **Security**: Stateless JWT Bearer tokens + Role-Based Access Control (`Candidate`, `Recruiter`).
-- **Database**: Microsoft SQL Server 2025 with Entity Framework Core 9 Code-First context.
-- **DevOps**: Docker, `docker-compose.yml`, Kubernetes manifests (`infra/kubernetes/`), Terraform IaC (`infra/terraform/`), and GitHub Actions CI/CD workflow (`.github/workflows/ci-cd.yml`).
+---
+
+## ✨ Core Features & Technical Capability Matrix
+
+| Feature Area | Key Capabilities | Technical Stack |
+| :--- | :--- | :--- |
+| **Authentication & RBAC** | Stateless JWT Bearer Auth, BCrypt Password Hashing, Candidate vs. Recruiter Policies | ASP.NET Core Security, Angular `AuthGuard` |
+| **Job Posting Management** | Full CRUD operations for listings, required skills tagging, filter by department/location | ASP.NET Core Web API, EF Core 9 |
+| **AI Resume Parser** | PDF/DOCX text extraction, candidate contact detection, skill recognition | Python 3.11, FastAPI, Regular Expression NLP |
+| **Resume-Job Match Engine** | Skill overlap analysis, gap identification, 0-100 score calculation, decision recommendation | Python FastAPI, OpenAI GPT-4 API |
+| **Dynamic Interview Question Generator**| Generates customized technical & behavioral interview questions tailored to applicant missing skills | Python FastAPI microservice, .NET HttpClient |
+| **Recruiter Portal** | Active job metrics, candidate pipeline table, bulk status updates (Approve/Reject) | Angular 22 Signals, Reactive Forms, CSS Grid |
+| **Candidate Portal** | Resume upload, position search, application history tracker, match score feedback | Angular 22 Standalone Components |
 
 ---
 
@@ -72,6 +118,7 @@ ai-recruitment-platform/
 │   ├── migrations/                   # 001_InitialSchema.sql
 │   └── seed/                         # seed_data.sql
 ├── docs/                             # Architecture, Database, API, and Interview Prep Docs
+│   ├── assets/                       # UI Visual Mockups and Screenshots
 │   ├── architecture.md
 │   ├── database.md
 │   ├── api.md
@@ -98,55 +145,29 @@ cd ai-recruitment-platform
 # Spin up Database, AI Microservice, .NET Backend, and Angular Frontend
 docker-compose up --build
 ```
-Access points:
-- **Angular Frontend**: `http://localhost:4200`
-- **ASP.NET Core Web API**: `http://localhost:5000/swagger`
-- **AI Microservice**: `http://localhost:8000/docs`
 
-### Option 2: Running Components Individually
-
-1. **Database**:
-   Run `database/migrations/001_InitialSchema.sql` and `database/seed/seed_data.sql` on your local SQL Server instance.
-
-2. **AI Microservice**:
-   ```bash
-   cd ai-service
-   python -m venv venv
-   source venv/bin/activate  # or venv\Scripts\activate on Windows
-   pip install -r requirements.txt
-   uvicorn app.main:app --reload --port 8000
-   ```
-
-3. **Backend API**:
-   ```bash
-   cd backend/Recruitment.API
-   dotnet run
-   ```
-
-4. **Angular Frontend**:
-   ```bash
-   cd frontend/recruitment-app
-   npm install
-   npm start
-   ```
+Access Points:
+- 💻 **Angular 22 Frontend**: `http://localhost:4200`
+- ⚡ **ASP.NET Core Web API**: `http://localhost:5000/swagger`
+- 🤖 **FastAPI AI Microservice**: `http://localhost:8000/docs`
 
 ---
 
-## 🧪 Testing
+## 🧪 Automated Testing
 
-- **Run .NET Unit Tests**:
+- **Backend Unit Tests (.NET 10)**:
   ```bash
   dotnet test backend/RecruitmentPlatform.sln
   ```
-- **Run Python Pytest Suite**:
+- **AI Microservice Pytest Suite**:
   ```bash
   cd ai-service && pytest tests/
   ```
 
 ---
 
-## 📚 Technical Documentation links
-- [Architecture & Design Specs](docs/architecture.md)
-- [Database Schema & ER Diagram](docs/database.md)
-- [REST API Endpoints Specification](docs/api.md)
-- [Cognizant Interview Preparation Guide](docs/interview-guide.md)
+## 📚 Technical Documentation Links
+- 📘 [Architecture & Design Specifications](docs/architecture.md)
+- 🗄️ [Database Schema & ER Diagram](docs/database.md)
+- 🌐 [REST API Endpoints Specification](docs/api.md)
+- 🎓 [Cognizant Interview Preparation Guide](docs/interview-guide.md)
