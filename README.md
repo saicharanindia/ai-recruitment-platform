@@ -1,10 +1,11 @@
 # Smart Recruitment & Resume Screening Platform
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/saicharanindia/ai-recruitment-platform/main/docs/assets/dashboard.png" alt="Smart Recruitment Platform Dashboard" width="100%" />
+  <img src="https://raw.githubusercontent.com/saicharanindia/ai-recruitment-platform/main/docs/assets/hero-banner.png" alt="Smart Recruitment Platform Engineered by Sanivarapu Sai Charan" width="100%" />
 </p>
 
 <p align="center">
+  <img src="https://img.shields.io/badge/Engineered_By-Sanivarapu_Sai_Charan-007ACC?style=for-the-badge&logo=github&logoColor=white" alt="Engineered By Sanivarapu Sai Charan">
   <img src="https://img.shields.io/badge/CI%2FCD-GitHub_Actions-2088FF?style=for-the-badge&logo=githubactions&logoColor=white" alt="CI/CD Status">
   <img src="https://img.shields.io/badge/.NET-10.0_LTS-512BD4?style=for-the-badge&logo=dotnet&logoColor=white" alt=".NET 10">
   <img src="https://img.shields.io/badge/Angular-22.0-DD0031?style=for-the-badge&logo=angular&logoColor=white" alt="Angular 22">
@@ -15,13 +16,13 @@
   <img src="https://img.shields.io/badge/Terraform-IaC-7B42BC?style=for-the-badge&logo=terraform&logoColor=white" alt="Terraform">
 </p>
 
-An enterprise-ready **AI-Driven Recruitment Platform** designed for high-scale candidate management, automated resume parsing, job match scoring, and dynamic interview question generation.
+An enterprise-ready, **AI-Driven Recruitment Platform** designed for high-scale candidate pipeline management, automated resume parsing, AI-powered match scoring, and dynamic interview question generation.
 
 ---
 
 ## 📸 Platform Interface Screenshots
 
-### 📊 1. Recruiter Management Portal
+### 📊 1. Recruiter Management Portal & Analytics
 *Comprehensive candidate pipeline tracking, real-time match scoring breakdown, applicant demographics, and top skills distribution.*
 
 <p align="center">
@@ -39,9 +40,18 @@ An enterprise-ready **AI-Driven Recruitment Platform** designed for high-scale c
 
 ---
 
+### 💼 3. Candidate Career Hub & Resume Management
+*Candidate portal for uploading resumes (PDF/DOCX), browsing open positions, tracking application lifecycle statuses, and receiving AI match feedback.*
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/saicharanindia/ai-recruitment-platform/main/docs/assets/candidate-portal.png" alt="Candidate Portal Screen" width="100%" />
+</p>
+
+---
+
 ## 🎯 Executive Summary & Pitch
 
-> *"Smart Recruitment is an end-to-end full-stack hiring application built with ASP.NET Core (.NET 10 LTS Clean Architecture), Angular 22, and a Python FastAPI AI microservice utilizing OpenAI GPT-4. It enables Recruiters to post job openings, manage applicant pipelines, view AI match scores, and generate customized technical interview questions. Candidates can browse positions, upload resumes, receive automated match feedback, and track application statuses. Built for Cognizant interview excellence."*
+> *"Smart Recruitment is an end-to-end full-stack hiring application built with ASP.NET Core (.NET 10 LTS Clean Architecture), Angular 22, and a Python FastAPI AI microservice utilizing OpenAI GPT-4. It enables Recruiters to post job openings, manage applicant pipelines, view AI match scores, and generate customized technical interview questions. Candidates can browse positions, upload resumes, receive automated match feedback, and track application statuses. Engineered by **Sanivarapu Sai Charan** for Cognizant interview excellence."*
 
 ---
 
@@ -118,7 +128,11 @@ ai-recruitment-platform/
 │   ├── migrations/                   # 001_InitialSchema.sql
 │   └── seed/                         # seed_data.sql
 ├── docs/                             # Architecture, Database, API, and Interview Prep Docs
-│   ├── assets/                       # UI Visual Mockups and Screenshots
+│   ├── assets/                       # UI Visual Mockups and Hero Banner
+│   │   ├── hero-banner.png
+│   │   ├── dashboard.png
+│   │   ├── ai-match.png
+│   │   └── candidate-portal.png
 │   ├── architecture.md
 │   ├── database.md
 │   ├── api.md
@@ -171,3 +185,6 @@ Access Points:
 - 🗄️ [Database Schema & ER Diagram](docs/database.md)
 - 🌐 [REST API Endpoints Specification](docs/api.md)
 - 🎓 [Cognizant Interview Preparation Guide](docs/interview-guide.md)
+
+---
+*Crafted with ❤️ by Sanivarapu Sai Charan*
