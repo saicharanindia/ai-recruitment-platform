@@ -1,10 +1,10 @@
 # Smart Recruitment & Resume Screening Platform
 
-[![CI/CD Pipeline](https://github.com/recruitment/ai-recruitment-platform/actions/workflows/ci-cd.yml/badge.svg)](https.github.com)
-[![.NET 10 LTS](https://img.shields.io/badge/.NET-10.0-purple.svg)](https://dotnet.microsoft.com/)
-[![Angular 22](https://img.shields.io/badge/Angular-22-red.svg)](https://angular.dev/)
-[![Python 3.11 FastAPI](https://img.shields.io/badge/Python-FastAPI-teal.svg)](https://fastapi.tiangolo.com/)
-[![SQL Server 2025](https://img.shields.io/badge/Database-SQL_Server_2025-blue.svg)](https://www.microsoft.com/sql-server)
+[![CI/CD Pipeline](https://github.com/saicharanindia/ai-recruitment-platform/actions/workflows/ci-cd.yml/badge.svg)](https://github.com/saicharanindia/ai-recruitment-platform/actions)
+![.NET 10 LTS](https://img.shields.io/badge/.NET-10.0-purple.svg)
+![Angular 22](https://img.shields.io/badge/Angular-22-red.svg)
+![Python 3.11 FastAPI](https://img.shields.io/badge/Python-FastAPI-teal.svg)
+![SQL Server 2025](https://img.shields.io/badge/Database-SQL_Server_2025-blue.svg)
 
 An enterprise-ready **AI-Driven Recruitment Platform** designed for high-scale candidate management, automated resume parsing, job match scoring, and dynamic interview question generation.
 
@@ -92,7 +92,7 @@ ai-recruitment-platform/
 ### Option 1: Using Docker Compose (Recommended)
 ```bash
 # Clone the repository
-git clone https://github.com/your-username/ai-recruitment-platform.git
+git clone https://github.com/saicharanindia/ai-recruitment-platform.git
 cd ai-recruitment-platform
 
 # Spin up Database, AI Microservice, .NET Backend, and Angular Frontend
@@ -142,34 +142,6 @@ Access points:
   ```bash
   cd ai-service && pytest tests/
   ```
-
----
-
-## 📤 How to Push to Your Remote GitHub Repository
-
-If you're initializing this new project on Git:
-
-```bash
-cd ai-recruitment-platform
-
-# Initialize git repository
-git init
-
-# Add all generated files
-git add .
-
-# Initial commit
-git commit -m "feat: initialize enterprise AI recruitment platform repository"
-
-# Rename branch to main
-git branch -M main
-
-# Add your GitHub repository remote
-git remote add origin https://github.com/YOUR_GITHUB_USERNAME/ai-recruitment-platform.git
-
-# Push code to GitHub
-git push -u origin main
-```
 
 ---
 
