@@ -1,0 +1,66 @@
+version: '3.8'
+
+services:
+  database:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: recruitment-sqlserver
+    environment:
+      - ACCEPT_EULA=Y
+      - MSSQL_SA_PASSWORD=YourSecurePassword123!
+    ports:
+      - "1433:1433"
+    volumes:
+      - sqlserver-data:/var/opt/mssql/data
+    networks:
+      - recruitment-net
+
+  ai-service:
+    build:
+      context: ./ai-service
+      dockerfile: Dockerfile
+    container_name: recruitment-ai-service
+    ports:
+      - "8000:8000"
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY:-sk-mock-key}
+      - LLM_MODEL=${LLM_MODEL:-gpt-4}
+      - ENVIRONMENT=development
+    networks:
+      - recruitment-net
+
+  backend-api:
+    build:
+      context: ./backend
+      dockerfile: Recruitment.API/Dockerfile
+    container_name: recruitment-backend-api
+    ports:
+      - "5000:80"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - DB_CONNECTION_STRING=Server=database,1433;Database=RecruitDB;User Id=sa;Password=YourSecurePassword123!;TrustServerCertificate=True;
+      - AI_SERVICE_URL=http://ai-service:8000
+      - JWT_SECRET=SuperSecretKeyForJwtTokenGeneration2026WithAtLeast256BitsLength!
+    depends_on:
+      - database
+      - ai-service
+    networks:
+      - recruitment-net
+
+  frontend-app:
+    build:
+      context: ./frontend/recruitment-app
+      dockerfile: Dockerfile
+    container_name: recruitment-frontend-app
+    ports:
+      - "4200:80"
+    depends_on:
+      - backend-api
+    networks:
+      - recruitment-net
+
+volumes:
+  sqlserver-data:
+
+networks:
+  recruitment-net:
+    driver: bridge
