@@ -1,7 +1,7 @@
 # Smart Recruitment & Resume Screening Platform
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/saicharanindia/ai-recruitment-platform/main/docs/assets/hero-banner.png" alt="Smart Recruitment Platform Engineered by Sanivarapu Sai Charan" width="100%" />
+  <img src="https://raw.githubusercontent.com/saicharanindia/ai-recruitment-platform/main/docs/assets/Codex Image 17 Aug 2026, 20_07_49.png" alt="Smart Recruitment Platform Engineered by Sanivarapu Sai Charan" width="100%" />
 </p>
 
 <p align="center">
